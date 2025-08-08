@@ -3,6 +3,7 @@ import './globals.css';
 import Header from './component/Header';
 import Footer from './component/Footer';
 
+// Load Google fonts with CSS variable names
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -21,11 +22,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen pt-10`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen pt-10`}
+        suppressHydrationWarning
+      >
         <Header />
-        <div className="pt-16 flex-grow"> {/* Added pt-16 to push content below fixed header */}
+        <main className="pt-16 flex-grow">
           {children}
-        </div>
+        </main>
         <Footer />
       </body>
     </html>
